@@ -1,0 +1,117 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>568</x><y>8</y><w>200</w><h>224</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+BuildView
+--
++ getBuildName(): String
++ setBuildName(name: String)
++ showBuild(build: Build)
++ showMessage(message: String)
++ askDiscountedPrice(price: double)
++ showErrors(errors: String[])
++ addComponent()
++ createNewBuild()
++ removeComponent(c: Component)
++ exitBuild()
++ addToCart()
++ saveBuild()
++ uploadBuild()
++ renameBuild(name: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>568</x><y>272</y><w>200</w><h>224</h></coordinates><panel_attributes>BuildActivity
+--
+- viewModel: BuildViewModel
+- presenter: BuildPresenter
+- isAdmin: boolean
+--
+# onCreate(savedInstanceState)
++ getBuildName(): String
++ showBuild(build: Build)
++ showMessage(message: String)
++ askDiscountedPrice(price: double)
++ showErrors(errors: String[])
++ addComponent()
++ createNewBuild()
++ removeComponent(c: Component)
++ exitBuild()
++ addToCart()
++ saveBuild()
++ uploadBuild()
++ renameBuild(name: String)
+- setupObserver()
+- addComponentView(container, c)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>656</x><y>224</y><w>24</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>568</x><y>536</y><w>200</w><h>64</h></coordinates><panel_attributes>BuildViewModel
+--
+- presenter: BuildPresenter
+--
++ getPresenter(): BuildPresenter</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>656</x><y>488</y><w>24</w><h>64</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>208</x><y>272</y><w>248</w><h>280</h></coordinates><panel_attributes>BuildPresenter
+--
+- instance: BuildPresenter
+- buildData: MutableLiveData&lt;Build&gt;
+- view: BuildView
+- repo: DataRepository
+--
++ getInstance(): BuildPresenter
++ setView(view: BuildView)
++ setRepo(repo: DataRepository)
++ createNewBuild()
++ addToCart(): boolean
++ saveBuild(): boolean
++ uploadBuild()
++ onDiscountedPriceEntered(price: double)
++ addComponentToBuild(c: Component): boolean
++ removeComponentFromBuild(c: Component)
++ getErrorMessages(): String[]
++ buildIsComplete(): boolean
++ buildHasPsu(): boolean
++ renameBuild(name: String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>368</y><w>136</w><h>208</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>10;10;150;240</additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>112</y><w>136</w><h>208</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>150;10;10;240</additional_attributes></element><element><id>UMLClass</id><coordinates><x>208</x><y>608</y><w>248</w><h>200</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+DataRepository
+--
++ getSavedBuilds(callback)
++ saveBuild(build: Build)
++ getComponents(type, clazz, callback)
++ addOfferedBuild(build: Admin_Build)
+... (other methods)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>328</x><y>544</y><w>24</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>208</x><y>848</y><w>248</w><h>80</h></coordinates><panel_attributes>FirebaseRepository
+--
+- instance: FirebaseRepository
+--
++ getInstance(): FirebaseRepository
+... (implementation)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>328</x><y>800</y><w>24</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>848</x><y>272</y><w>224</w><h>368</h></coordinates><panel_attributes>Build
+--
+- wattDemand: int
+- totalMemory: int
+- totalStorage: int
+- completed: boolean
+- tower: Tower
+- motherboard: Motherboard
+- peripheralComponents: HashMap
+--
++ addTower(t: Tower): boolean
++ removeTower(): boolean
++ addMotherboard(m: Motherboard): boolean
++ removeMotherboard(): boolean
++ addPeripheralComponent(c: PC): boolean
++ removePeripheralComponent(c: PC): boolean
++ isPsuSufficient(): boolean
++ getUnmatchedPorts(): HashSet&lt;Port&gt;
++ isCompleted(): boolean
+- updateBuildState()
+- checkCompletion()
+- rebuildPorts()
+- portsMatching()
+- updateWattDemand()
+- updatePrice()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>888</x><y>184</y><w>144</w><h>56</h></coordinates><panel_attributes>Product
+--
+- id: int
+- name: String
+- price: double</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>952</x><y>232</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1152</x><y>272</y><w>160</w><h>96</h></coordinates><panel_attributes>Component
+--
+- manufacturer: String
+- img: String
+- providedPorts: HashSet
+- requiredPorts: HashSet</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1024</x><y>208</y><w>224</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;260;10;260;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1152</x><y>432</y><w>160</w><h>40</h></coordinates><panel_attributes>Tower</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1152</x><y>488</y><w>160</w><h>40</h></coordinates><panel_attributes>Motherboard</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1152</x><y>544</y><w>160</w><h>40</h></coordinates><panel_attributes>PeripheralComponent</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1224</x><y>360</y><w>24</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1224</x><y>464</y><w>24</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1224</x><y>520</y><w>24</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1064</x><y>432</y><w>104</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1064</x><y>488</y><w>104</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1064</x><y>544</y><w>104</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..*</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>848</x><y>704</y><w>224</w><h>64</h></coordinates><panel_attributes>Admin_Build
+--
+- discountPrice: double
+- onDiscount: boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>952</x><y>632</y><w>24</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element></diagram>

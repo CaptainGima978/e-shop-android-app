@@ -1,0 +1,240 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>// Uncomment the following line to change the fontsize and font:
+fontsize=15
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text><element><id>UMLClass</id><coordinates><x>567</x><y>413</y><w>119</w><h>77</h></coordinates><panel_attributes>Component
+--
+- manufacturer: String
+- img: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>224</x><y>0</y><w>91</w><h>126</h></coordinates><panel_attributes>CPU
+--
+- socket: String
+- coreCount: int
+- clock: double
+- clockBoost: double
+- tdp: int
+- cache: int
+- memorySupport: int
+- coolerIn: boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>476</x><y>0</y><w>84</w><h>126</h></coordinates><panel_attributes>GPU
+--
+- memory: int
+- clock: double
+- clockBoost: double
+- length: int
+- tdp: int
+- expansionSlots: int
+- hdmiOut: int
+- dpOut: int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>581</x><y>0</y><w>84</w><h>126</h></coordinates><panel_attributes>Memory
+--
+- type: String
+- capacity: int
+- modules: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>259</y><w>322</w><h>168</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=BLUE</panel_attributes><additional_attributes>440;220;440;130;10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>385</x><y>119</y><w>21</w><h>70</h></coordinates><panel_attributes>fg=BLUE</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>119</y><w>259</w><h>70</h></coordinates><panel_attributes>fg=BLUE</panel_attributes><additional_attributes>10;80;350;80;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>448</x><y>119</y><w>189</w><h>70</h></coordinates><panel_attributes>fg=BLUE</panel_attributes><additional_attributes>10;80;250;80;250;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>588</y><w>224</w><h>182</h></coordinates><panel_attributes>Build
+--
+- wattDemand: int
+- totalMemory: int
+- totalStorage: int
+- completed: boolean
+
+-
+- checkCompletion(): void
+- updateWattDemand(): void
+- isPsuSufficient(): boolean
+- portsMatching(): boolean
++ addTower(Tower): boolean
++ removeTower(): boolean
++ addMotherboard(Motherboard): boolean
++ removeMotherboard(): boolean
++ addPeripheralComponent(Component): boolean
++ removePeripheralComponent(Component): boolean
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>35</x><y>119</y><w>259</w><h>70</h></coordinates><panel_attributes>fg=BLUE</panel_attributes><additional_attributes>350;80;10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>910</x><y>609</y><w>126</w><h>105</h></coordinates><panel_attributes>Order
+--
+- nextOrderId: int
+- OrderId: int
+- numOfProducts: int
+- totalPrice: double
+- status: String
+
+-
++ processPayment(Card): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>665</x><y>602</y><w>259</w><h>35</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+m1=1..*
+m2=*
+</panel_attributes><additional_attributes>10;20;350;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1316</x><y>546</y><w>84</w><h>77</h></coordinates><panel_attributes>Card
+--
+- number: String
+- cvv: int
+- date: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>742</x><y>707</y><w>147</w><h>112</h></coordinates><panel_attributes>Cart
+--
+- totalPrice: double
+- numOfProducts: int
+
+-
++ addToCart(Orderline): void
++ clearCart(): void
++ increaseQuantity(OrderLine): void
++ decreaseQuantity(OrderLine): void
++ removeFromCart(OrderLine): void 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1134</x><y>714</y><w>112</w><h>77</h></coordinates><panel_attributes>CustomerAccount
+--
+- name: String
+- username: String
+- email: String
+-
++ addCard(Card): boolean
++ removeCard(Card): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>665</x><y>651</y><w>175</w><h>70</h></coordinates><panel_attributes>m1=*
+m2=*</panel_attributes><additional_attributes>10;10;220;10;220;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>609</y><w>84</w><h>91</h></coordinates><panel_attributes>Address
+--
+- zipcode: String
+- street: String
+- number: int
+- city: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1029</x><y>637</y><w>105</w><h>35</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+m1=*
+m2=1
+r2= -address</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1029</x><y>546</y><w>112</w><h>98</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+m1=1
+m2=1
+r1= - order
+r2= - paymentservice</panel_attributes><additional_attributes>10;110;40;110;40;20;140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1029</x><y>658</y><w>119</w><h>84</h></coordinates><panel_attributes>lt=&lt;-&gt;
+m1=*
+m2=1
+r1= -orders
+r2= -customeraccount
+</panel_attributes><additional_attributes>10;20;50;20;50;90;150;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>119</x><y>826</y><w>119</w><h>63</h></coordinates><panel_attributes>Admin_Build
+--
+- originalPrice: double
+- discountPrice: double
+- onDiscount: boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>168</x><y>763</y><w>119</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=BLUE</panel_attributes><additional_attributes>150;10;150;50;10;50;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>882</x><y>728</y><w>266</w><h>35</h></coordinates><panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+r1= -cart</panel_attributes><additional_attributes>10;20;360;20</additional_attributes></element><element><id>Relation</id><coordinates><x>385</x><y>784</y><w>875</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+m2=*
+r1= Customer_Builds_saved
+r2= - CustomerAccount
+
+</panel_attributes><additional_attributes>10;70;1120;70;1120;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>273</x><y>826</y><w>119</w><h>63</h></coordinates><panel_attributes>Customer_Build
+--
+- published: Boolean
+- likes: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>763</y><w>91</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=BLUE</panel_attributes><additional_attributes>10;10;10;50;110;50;110;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1127</x><y>546</y><w>119</w><h>42</h></coordinates><panel_attributes>PaymentService
+--
+amount: double
+-
++ processPayment(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1239</x><y>539</y><w>91</w><h>35</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m1=*
+m2=1
+r2= -card</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>581</x><y>588</y><w>91</w><h>91</h></coordinates><panel_attributes>Product
+--
+- id: id
+- name: String
+- price: double</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>616</x><y>483</y><w>21</w><h>119</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=BLUE</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>427</x><y>616</y><w>168</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=BLUE</panel_attributes><additional_attributes>220;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>805</x><y>581</y><w>21</w><h>49</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>763</x><y>539</y><w>98</w><h>49</h></coordinates><panel_attributes>OrderLine
+--
+- quantity: int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>259</x><y>217</y><w>126</w><h>49</h></coordinates><panel_attributes>PeripheralComponent
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>126</x><y>406</y><w>91</w><h>126</h></coordinates><panel_attributes>Motherboard
+--
+- socket: String
+- formFactor: String
+- memoryType: String
+- memorySlots: int
+- m2Slots: int
+- pciSlots: int
+- sataSlots: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>28</x><y>406</y><w>91</w><h>126</h></coordinates><panel_attributes>Tower
+--
+- formFactor: String[ ]
+- powerSupply: int
+- maxGpuLength: int
+- driveBays: int[ ]
+- expansionSlots: int
+- dimensions: String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>343</x><y>0</y><w>105</w><h>126</h></coordinates><panel_attributes>Storage
+--
+- capacity: int
+- type: String
+- driveFormFactor :String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>259</x><y>119</y><w>21</w><h>70</h></coordinates><panel_attributes>fg=BLUE</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>168</y><w>21</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=BLUE</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>161</x><y>343</y><w>175</w><h>77</h></coordinates><panel_attributes>lt=-
+fg=BLUE</panel_attributes><additional_attributes>230;10;10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>63</x><y>343</y><w>119</w><h>77</h></coordinates><panel_attributes>lt=-
+fg=BLUE</panel_attributes><additional_attributes>150;10;10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>154</x><y>525</y><w>77</w><h>112</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=*
+r1= - motherboard</panel_attributes><additional_attributes>10;10;10;130;80;130</additional_attributes></element><element><id>Relation</id><coordinates><x>63</x><y>525</y><w>161</w><h>147</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=*
+r1= - tower</panel_attributes><additional_attributes>10;10;10;180;210;180</additional_attributes></element><element><id>Relation</id><coordinates><x>273</x><y>259</y><w>112</w><h>343</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=*
+r1=PeripheralCompoennts</panel_attributes><additional_attributes>10;10;10;470</additional_attributes></element><element><id>UMLClass</id><coordinates><x>294</x><y>413</y><w>154</w><h>98</h></coordinates><panel_attributes>Port
+--
+- name: String
+- type: Type
+- count: int
+
+-
++ covers(Port): boolean
++ provide(component): HashSet&lt;Port&gt;
++ require(component): HashSet&lt;Port&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>441</x><y>427</y><w>140</w><h>35</h></coordinates><panel_attributes>lt=-&gt;
+m1=1..*
+m2=*
+requiredPorts</panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>441</x><y>455</y><w>140</w><h>35</h></coordinates><panel_attributes>lt=-&gt;
+m1=1..*
+m2=*
+providedPorts</panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>385</x><y>784</y><w>861</w><h>105</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+m2=*
+r1= Customer_Builds_liked
+</panel_attributes><additional_attributes>10;120;1200;120;1200;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>98</w><h>126</h></coordinates><panel_attributes>Cooler
+--
+- rpm: int
+- noiselevel: double
+- socket: String[ ]
+- waterCooled: boolean	</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>756</x><y>336</y><w>91</w><h>140</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+TYPE
+--
+CPU_SOCKET
+FORM_FACTOR
+EXPANSION
+RAM_SLOT
+PCIe_x16
+M_2
+DRIVE_FORM_FACTOR
+SATA
+HDMI
+DISPLAY_PORT</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>581</y><w>21</w><h>91</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>1197</x><y>665</y><w>112</w><h>105</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1= - address</panel_attributes><additional_attributes>10;20;140;20;140;120;70;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1239</x><y>616</y><w>189</w><h>175</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+m2= 1
+r1= - cardList</panel_attributes><additional_attributes>200;10;200;220;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>322</x><y>504</y><w>84</w><h>98</h></coordinates><panel_attributes>lt=-&gt;
+m1=1..*
+m2=*
+requiredPorts
+providePorts
+unmatchedPorts</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>112</x><y>0</y><w>98</w><h>126</h></coordinates><panel_attributes>PSU
+--
+- wattage: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>154</x><y>119</y><w>21</w><h>70</h></coordinates><panel_attributes>fg=BLUE</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>

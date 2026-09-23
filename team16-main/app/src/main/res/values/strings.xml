@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PC Builder</string>
+    <string name="gpu">GPU</string>
+    <string name="cpu">CPU</string>
+    <string name="motherboard">Motherboard</string>
+    <string name="tower">Tower</string>
+    <string name="memory">Memory</string>
+    <string name="storage">Storage</string>
+    <string name="psu">PSU</string>
+    <string name="cooler">Cooler</string>
+    <string name="menu_home">MENU</string>
+    <string name="menu_build">BUILD</string>
+    <string name="menu_cart">CART</string>
+    <string name="menu_pc">PCs</string>
+    <string name="header_action">Open user profile</string>
+    <string name="add_component">Add Component</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="edit_component">Edit Component"</string>
+</resources>
